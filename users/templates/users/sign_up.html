@@ -1,0 +1,122 @@
+{% extends 'users/user_base.html' %}
+
+{% load static %}
+{% block content %}
+<!-- Sign up form -->
+<section class="signup">
+    <div class="container">
+        <div class="signup-content">
+            <div class="signup-form">
+                <h2 class="form-title">Sign up</h2>
+                <div class="signup-type-container">
+                    <button class="signup-type-btn active" id="individual-signup" onclick="signup_tabs(0)">for individual</button>
+                    <button class="signup-type-btn" id="group-signup" onclick="signup_tabs(1)">for group</button>
+                </div>
+
+                <hr>
+
+                <div class="signup-tabshow">
+                    <form method="POST" class="register-form" id="signup-form">{% csrf_token %}
+                        <div class = "form-group form-button" id="error-report">
+                            {% if email_confirmation_message %}
+                                <span class='green-message'> 
+                                    <i class = "fas fa-check-circle" aria-hidden="true"> </i>
+                                    {{ email_confirmation_message }} 
+                                </span>
+                            {% elif signup_error %}
+                                {% for error in signup_error %}
+                                    <span class='error-message'>
+                                        <i class="fas fa-circle-xmark" aria-hidden="true"> </i>
+                                        {{ error }} 
+                                    </span>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+    
+                        {% for field in registration_form %}
+            
+                        <div class="form-group">
+                            <label><i class="fas fa-{{ field.field.icon }}"></i></label>
+                            {{field}}
+                        </div>
+            
+                        {% endfor %}
+    
+                        <div class="show-p">
+                            <input type="checkbox" id="showpass"onclick="showPasswordFunction()">
+                            Show Password
+                        </div>
+    
+                        <div class="form-group form-button">
+                            <input type="submit" name="signup" id="signup" class="form-submit" value="Register"/>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="signup-tabshow">
+                    <div class = "form-group form-button" id="error-report">
+
+                    </div>
+
+                    <div class="form-group">
+                        <label><i class="fa-solid fa-school-circle-exclamation"></i></label>
+                        <input type="text" placeholder="Invitation Code">
+                    </div>
+                    <span class='green-message'> 
+                        Please contact us for signing up a group, an invitation code will only be provided after
+                        your group to be authorized.
+                    </span>
+                </div>
+
+            </div>
+            
+            <div class="signup-image">
+                <figure><img src="{% static 'img/sign_up.png' %}" alt="sing up image"></figure>
+                <a href="{% url 'login'%}" class="signup-image-link">Already a member</a>
+            </div>
+        </div>
+        
+    </div>
+    <script>
+        function showPasswordFunction() {
+            var x = document.getElementById("id_password1");
+            var y = document.getElementById("id_password2");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+
+            if (y.type === "password") {
+                y.type = "text";
+            } else {
+                y.type = "password";
+            }
+        }
+    </script>
+<!--
+    <script>
+      $(document).on('submit','#signup-form',function(e){
+          e.preventDefault();
+          var signup_form_id = $("#signup-form")
+          $.ajax({
+              type:'POST',
+              url:'{% url "register" %}',
+              data: signup_form_id.serialize(),
+              
+              success: function(data){
+                if(data){
+                  var html = "<span class='error-message'>" + data + "</span>";
+                  $('#error-report').empty();
+                  $('#error-report').append(html);
+                }
+              }
+          })
+          
+        });
+    </script>
+-->
+</section>
+
+
+{% endblock content %}

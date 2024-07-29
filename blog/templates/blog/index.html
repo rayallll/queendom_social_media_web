@@ -1,0 +1,334 @@
+{% extends 'blog/base.html' %}
+
+{% load static %}
+{% load id_change %}
+{% block content %}
+<!----------------Home Page Start----------------->
+<div class="cover">
+    <div class="container">
+        <!--Left side bar-->
+        <div class="left-sidebar"></div>
+
+        <!--Main Content-->
+        <div class="main-content">
+
+            <!----------------Feelings menu Start----------------->
+            <div class="feelings-menu">
+                <div class="feelings-menu-inner" id="feelings-selector">
+                    <img src="" class="fas fa-smile" alt="">
+                    <img src="" class="fas fa-grin" alt="">
+                    <img src="" class="fas fa-angry" alt="">
+                    <img src="" class="fas fa-dizzy" alt="">
+                    <img src="" class="fas fa-flushed" alt="">
+                    <img src="" class="fas fa-frown" alt="">
+                    <img src="" class="fas fa-grimace" alt="">
+                    <img src="" class="fas fa-grin-beam" alt="">
+                    <img src="" class="fas fa-grin-beam-sweat" alt="">
+                    <img src="" class="fas fa-grin-hearts" alt="">
+                    <img src="" class="fas fa-grin-squint" alt="">
+                    <img src="" class="fas fa-grin-squint-tears" alt="">
+                    <img src="" class="fas fa-grin-stars" alt="">
+                    <img src="" class="fas fa-grin-tongue" alt="">
+                    <img src="" class="fas fa-grin-tongue-wink" alt="">
+                    <img src="" class="fas fa-kiss" alt="">
+                    <img src="" class="fas fa-laugh" alt="">
+                    <img src="" class="fas fa-meh-rolling-eyes" alt="">
+                    <img src="" class="fas fa-meh-blank" alt="">
+                    <img src="" class="fas fa-sad-cry" alt="">
+                    <img src="" class="fas fa-sad-tear" alt="">
+                </div>
+            </div>
+        <!----------------Feelings menu End----------------->
+            
+            <!--------Sent Post Area Start-------->
+            <div class="write-post-container"> <!--Write-->
+                <div class="write-post-top">
+                    {% if request.user.is_authenticated %}
+                    <a href="{% url 'login' %}">
+                        <img src="{{ request.user.profile.profileimg.url }}">
+                    </a>
+                    <div class="title-box">
+                        <button type="button" onclick="openCreatePostMenu()">
+                            Share new idea...
+                        </button>
+                        <!--<input style="cursor: pointer;" onclick="openCreatePostMenu()" type="text" placeholder="Share new idea...">-->
+                    </div>
+                    {% else %}
+                    <a href="{% url 'login' %}">
+                        <img src="{% static 'img/log-icon.png' %}">
+                    </a>
+                    <div class="title-box">
+                        <a href="{% url 'login' %}">
+                            <input style="cursor: pointer;" type="text" placeholder="Share new idea...">
+                        </a>
+                    </div>
+                    {% endif %}
+                </div>
+                
+                <div class="post-input-container"> <!--Input-->
+                    <hr>
+                    <div class="add-post-links">
+                        <!--Icons of Post-->
+                        {% if request.user.is_authenticated %}
+                        <a style="cursor: pointer;" onclick="openCreatePostMenu()"><i class="fas fa-camera"></i>Photos</a>
+                        <!--<a style="cursor: pointer;"><i class="fas fa-grin-alt" onclick="openCreatePostMenu()"></i>FEELINGS</a>-->
+                        {% else %}
+                        <a style="cursor: pointer;" href="{% url 'login' %}"><i class="fas fa-camera"></i>Photos</a>
+                        <!--<a style="cursor: pointer;"><i class="fas fa-grin-alt"> Feelings</i></a>-->
+                        {% endif %}
+                    </div>
+                    
+                    
+                </div>
+            </div>
+            <!--------Sent Post Area End-------->
+
+            <!--------Self Post More Start-------->
+            <div class="selfmore-menu">
+                <div class="selfmore-menu-inner">
+                    <div class="header">
+                            <h2>About Your Post</h2>
+                        <label for="click" class="fas fa-times" onclick="selfmoreMenuToggle()"></label>
+                    </div>
+                        <div class="line"> </div>
+                        <button type="submit" class="edit-choice">Edit</button>
+                        <button type="submit" class="privacy-choice">Privacy</button>
+                        <button type="submit" class="delect-choice">Delete</button>   
+                </div>
+            </div>
+            <!--Delect Menu Start-->
+            <div class="delect-menu">
+                <div class="delect-menu-inner">
+                    <div class="header">
+                            <h2>Delete</h2>
+                    </div>
+                        <!--<label for="click" class="fas fa-check"></label>-->
+                        
+                        <p>Are you sure you want to delete this post?</p>
+                        <button type="submit" class="cancel-btn">Cancel</button>
+                        <button type="submit" class="delect-btn">Delete</button>
+                </div>
+            </div>
+            <!--Delect Menu Start-->
+            <!--Block Menu Start-->
+            <div class="block-menu">
+                <div class="header">
+                    <h2>More</h2>
+                    <label for="click" class="fas fa-times" onclick="blockMenuToggle()"></label>
+                </div>
+
+                <!--<label for="click" class="fas fa-check"></label>-->
+                <div class="line"> </div>
+                <h3>Privacy</h3>
+                <select name="privacy" id="privacy">
+                    <option value="Public">On</option>
+                    <option value="Privacy">Off</option>
+                </select>
+                
+            </div>
+            <!--Block Menu End-->
+            <!--------Self Post More End-------->
+
+
+            <!--------Friend Post More Start-------->
+            <div class="friendmore-menu">
+                <div class="friendmore-menu-inner">
+                    <div class="header">
+                            <h2>About Your Friend's Post</h2>
+                        <label for="click" class="fas fa-times" onclick="friendmoreMenuToggle()"></label>
+                    </div>
+                        <!--<label for="click" class="fas fa-check"></label>-->
+                        <div class="line"> </div>
+                        <button type="submit" class="report-choice">Report</button>
+                </div>
+            </div>
+            <div class="report-menu">
+                <div class="report-menu-inner">
+                    <div class="header">
+                        <h2>Report</h2>
+                        <label for="click" class="fas fa-times" onclick="reportMenuToggle()"></label>
+                    </div>
+                    <p>Why are you reporting this post?</p>
+                        <!--<label for="click" class="fas fa-check"></label>-->
+                        <div class="line"> </div>
+                        <div class="reportbtn">
+                            <button type="submit" class="report-choice-inner">It's spam</button>
+                            <button type="submit" class="report-choice-inner">Nudity or sexual activity</button>
+                            <button type="submit" class="report-choice-inner">Hate speech or symbols</button>
+                            <button type="submit" class="report-choice-inner">Violence or dangerous organizations</button>
+                            <button type="submit" class="report-choice-inner">Sale of illegal or regulated goods</button>
+                            <button type="submit" class="report-choice-inner">Bullying or harassment</button>
+                            <button type="submit" class="report-choice-inner">Intellectual property violation</button>
+                            <button type="submit" class="report-choice-inner">Suicide or self-injury</button>
+                            <button type="submit" class="report-choice-inner">Eating discorders</button>
+                            <button type="submit" class="report-choice-inner">Scam or fraud</button>
+                            <button type="submit" class="report-choice-inner">False information</button>
+                            <button type="submit" class="report-choice-inner">I just don't like it</button>
+                        </div>
+                </div>
+            </div>
+            <div class="report-success-menu">
+                <div class="report-success-inner">
+                    <div class="header">
+                        <h2>Report</h2>
+                        <label for="click" class="fas fa-times" onclick="reportsuccessMenuToggle()"></label>
+                    </div>
+                        <label for="click" class="fas fa-check"></label>
+                        <p>Thank you for letting us know :)</p>
+                        <div class="line"> </div>
+                </div>
+            </div>
+            
+            
+            
+            <!--------Friend Post More End-------->
+
+            <!--------All real posts Start-------->
+            {% for post in posts %}
+            <div class="self-post-container" id="{{ post.id }}">
+                <div class="post-row">
+                    <div class="user-profile">
+                        <a href="/{{ post.author.netid }}/">
+                            <img src="{{ post.author.profile.profileimg.url }}">
+                        </a>
+                        <div class="post-user-profile">
+                            <p>{{ post.author.full_name }}</p>
+                            <span>{{ post.data_published }}</span>
+                        </div>
+                    </div>
+                    <a href="#"><i class="fas fa-ellipsis-v" onclick="selfmoreMenuToggle()"></i></a>
+                </div>
+
+                
+                <h2 class="post-title">
+                    <a href="{{ post.author.netid }}/{{ post.id }}">
+                        {{ post.title }}
+                    </a>
+                </h2>
+                
+
+                <p class="post-text">
+                    {{ post.body }}
+                </p>
+                
+                {% if post.image_set.count != 0 %}
+                <section id="{{ post.id.hex|to_splider_id }}" class="splide" aria-label="Beautiful Images">
+                    <div class="splide__track">
+                            <ul class="splide__list">
+                                {% for image in post.image_set.all %}
+                                <li class="splide__slide">
+                                    <img src="{{ image.image.url }}" alt="">
+                                </li>
+                                {% endfor %}
+                            </ul>
+                    </div>
+                </section>
+                
+                <script>
+                    new Splide( '#{{ post.id.hex|to_splider_id }}', {
+
+                    } ).mount();
+                </script>
+                {% endif %}
+
+                <div class="post-bottom">
+                    <div class="activity-icons">
+                        <div class="icons">
+                            
+                            {% if request.user.is_authenticated %}
+                            <button id="like-button" value="{{post.id}}">
+                                    <i class="fas fa-heart like-i 
+                                    {% if post.likes|users_liked:request.user.email %}
+                                     active
+                                    {% endif %}">
+                                        
+                                        <span class="like_count" id="like_count">
+                                        {% if post.like_count != 0 %}
+                                            {{post.like_count}}
+                                        {% endif %}
+                                        </span>
+                                        
+                                    </i>
+                            </button>
+                            {% else %}
+                            <button id="like-button-inactive" value="{{post.id}}">
+                                <a style="text-decoration: none" href="{% url 'login' %}">
+                                    <i class="fas fa-heart like-i">
+                                    
+                                    <span class="like_count" id="like_count">
+                                    </span>
+                                    
+                                    </i>
+                                </a>
+                            </button>
+                            {% endif %}
+                        </div>
+                        <div class="icons">
+                            <button id="fav-button" value="{{post.id}}">
+                                    <i class="fas fa-star"></i>
+                            </button>
+                        </div>
+                        <div class="icons">
+                            <button id="share-button" value="{{post.id}}">
+                                    <i class="fas fa-share"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="comment-box">
+                        <input type="text" placeholder="Comment...">
+
+                        <div class="send-comment">
+                            <button id="comment-button" value="{{post.id}}">
+                                <i class="far fa-paper-plane"></i> <!--Comment-Send Icon-->
+                            </button>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+            </div>
+            {% endfor %}
+            <!--------All real posts End-------->
+            <script>
+                $(document).on('click', '#like-button', function(e){
+                    e.preventDefault();
+                    
+                    var postid = $(this).val();
+                    var currentPost = document.getElementById(postid);
+                    var currentPostLikeIcon = currentPost.getElementsByClassName("like-i")[0];
+
+                    if(currentPostLikeIcon.classList.contains("active")){
+                        currentPostLikeIcon.classList.remove("active");
+                    } else {
+                        currentPostLikeIcon.classList.add("active");
+                    }
+
+
+                    $.ajax({
+                        type: 'POST',
+                        url: '{% url "blog:like" %}',
+                        data: {
+                            postid: postid,
+                            csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+                            action: 'post'
+                        },
+                        success: function (json) {
+                            if (json['result'] != 0){
+                                currentPost.getElementsByClassName("like_count")[0].innerHTML = json['result']
+                            }else{
+                                currentPost.getElementsByClassName("like_count")[0].innerHTML = ""
+                            }
+                        },
+                        errpr: function (xhr, errmsg, err){
+
+                        }
+                    });
+                })
+            </script>
+        </div>
+        <!--Right side bar-->
+        <div class="right-sidebar"></div>
+    </div>
+</div>
+<!----------------Home Page End----------------->
+{% endblock content %}

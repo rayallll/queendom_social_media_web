@@ -1,0 +1,178 @@
+.edit-profile-container{
+    height: 600px;
+    width: 800px;
+    display: flex;
+    background: #fff;
+    margin: 0 auto;
+    position: relative;
+    margin-top: 5%;
+    box-shadow: 2px 5px 20px rgba(119, 119, 119, .5);
+    animation: fadeIn 1s;
+}
+/*----Left Box----*/
+.leftbox{
+    min-width: 250px;
+    font-weight: bold;
+    background: #141e5f;
+    box-shadow: 4px 3px 10px rgba(119, 119, 119, .5);
+}
+
+/*----Right Box----*/
+.rightbox{
+    width: 100%;
+    overflow-y: auto;
+    padding-top: 32px;
+}
+.tabShow{
+    transition: all .5s ease-in;
+    width: 80%;
+}
+.rightbox h2{
+    margin-left: 2px;
+    margin-top: 15px;
+    font-size: 1rem;
+}
+
+.profile-col{
+    display: flex;
+    align-items: center;
+    margin: 10px 0px;
+}
+
+select{
+    margin-top: 5px;
+    border-radius: 1.2em;
+    border: 1px solid #9a9a9a;
+    padding: 7px 0;
+    color: #626262;
+    outline: none;
+}
+.input, .profile p{
+    border: 0;
+    border-bottom: 1px solid #9a9a9a;
+    width: 80%;
+    font-size: .8em;
+    padding: 7px 0;
+    color: #626262;
+    outline: none;
+}
+
+.col-name {
+    padding: 0px 32px;
+    font-weight: bold;
+    flex: 0 0 100px;
+    text-align: right;
+}
+
+.col-name img{
+    width: 60px;
+    margin-right: 0px;
+}
+
+.input-text {
+    width: 100%;
+    padding: 8px 15px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 15px;
+}
+  
+.input-text::placeholder {
+    color: #B0BEC5;
+}
+
+.input-text:disabled {
+    background: #dddddd;
+}
+
+.save-btn {
+    width: 200px;
+    background-color: #b02828;
+    border: none;
+    outline: none;
+    height: 35px;
+    border-radius: 49px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin: 15px 35px;
+    margin-left: 0;
+    cursor: pointer;
+    transition: 0.5s;
+    box-shadow: 0 2px 5px  rgba(0, 0, 0, 0.6);
+  }
+  .save-btn:hover {
+    background-color: #f28f1e;
+  }
+
+nav-profile a{
+    list-style: none;
+    padding: 30px;
+    color: #fff;
+    font-size: 1.1em;
+    display: block;
+    transition: all .3s ease-in-out;
+}
+nav-profile a:hover{
+    background: #0f174e;
+}
+nav-profile .active{
+    background: #040a31;
+}
+/*----Change Password Icon----*/
+.forget-passwordbtn{
+    display: flex;
+    font-family: "Poppins", sans-serif;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color:#ab2222;
+    font-weight: 500;
+    font-size: 1rem;
+    margin: 0px 72px;
+    margin-left: 0;
+}
+
+/*-----Privacy Icon----*/
+.blocked-menu{
+    position: absolute;
+    width: 200px;
+    max-width: 300px;
+    height: 315px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    border-radius: 4px;
+    overflow: hidden;
+    top: 20%;
+    right: 13%;
+    max-height: 0;
+    transition: max-height 0.3s;
+}
+.blocked-menu-height{
+    max-height: 470px;
+}
+.blocked-menu-inner{
+    display: flex;
+    width: 600px;
+    padding: 20px;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+.blocked-menu select{
+    margin: 10px 15px;
+    border-radius: 1.2em;
+    border: 1px solid #9a9a9a;
+    width: 15%;
+    padding: 7px 0;
+    color: #626262;
+    outline: none;
+}
+
+/*----Help Icon----*/
+
+.tabShow{
+      display: none;
+  }
