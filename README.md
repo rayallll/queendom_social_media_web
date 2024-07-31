@@ -50,12 +50,24 @@ This feature provides users with real-time notifications for likes, comments, an
 
 - **Environment Setup**:<br>
 To run the project, you need to set up the following environment: <br>
-**Node.js and npm**: Ensure you have *Node.js* (version 14.x or above) and *npm* installed.<br>
-**Python and pip**: Ensure you have *Python* (version 3.x) and *pip* installed.<br>
-**Clone Repository**: Clone the project repository from GitHub.<br>
-**Install Dependencies for Node.js**: Navigate to the frontend directory and run *npm install* to install the required packages.<br>
-**Install Dependencies for Django**: Navigate to the backend directory and run *pip install -r requirements.txt* to install the required packages.<br>
-**Run the Application**: Start the *Django server* with *python manage.py runserver* in the backend directory and start the *Node.js server* with *npm start* in the frontend directory.<br>
+**1. Install Python**<br>
+If Python is not already installed on your system, follow these steps:<br>
+**2. Download Python**：Go to the [official Python website](https://www.python.org/downloads/) and download the latest version of Python.<br>
+**3. Install Python:** <br>
+  **Windows:** Run the installer and make sure to check the box that says "Add Python to PATH" before proceeding with the installation. <br>
+  **macOS:** You can use the installer package provided or install Python via Homebrew: (*brew install python*). <br>
+**4. Create Virtual Environment:** <br>
+*python -m venv venv* <br>
+**5. Activate Virtual Environment:** <br>
+**Windows:** venv\Scripts\activate <br>
+ **macOS:** source venv/bin/activate <br>
+**6. Install Django:** <br>
+*pip install django* <br>
+**7. Install Additional Dependencies:** <br>
+*pip install dj-database-url* <br>
+*pip install -r requirements.txt* <br>
+**8. Run Django Development Server:** <br>
+*python manage.py runserver* <br>
 
 ## Iterative Design
 - **Unit Test**:
