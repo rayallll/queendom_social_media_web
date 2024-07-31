@@ -69,4 +69,10 @@ Added a feature to **allow users** to report bugs and **provide feedback** direc
 **Improved the efficiency** of **real-time notifications** by reducing the frequency of server calls.<br>
 Added a **drag-and-drop images upload** feature in POST function to enhance user experience.
 
+## Video Demo
+[![Watch the video](readme-img/queendom-youtube-video.png)](https://www.youtube.com/watch?v=SeSH-yGvLrM)
+
+ * video link: https://www.youtube.com/watch?v=SeSH-yGvLrM
+
+
 
