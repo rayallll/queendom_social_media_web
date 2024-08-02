@@ -2,13 +2,25 @@
 A student life website for universities and colleges.
 
 ## Project Description
-- **Project Type**: Self-developed Social Media Website 
-- **Project Motivations**: When university students want to access the information, some information is posted on various platforms, including websites, social media, or even on bulletin boards spread around the campus. There needs to be one platform to gather all the unacademic information and make them
+- **Project Type**:<br>
+Self-developed Social Media Website 
+- **Project Motivations**:<br>
+When university students want to access the information, some information is posted on various platforms, including websites, social media, or even on bulletin boards spread around the campus. There needs to be one platform to gather all the unacademic information and make them
 accessible to all students
 
 ## Project Summary
-- **Completed Functionalities**:
-- **Project Goal**: Build a stronger community, improve resource acquisition and exchange efficiency, and collect data to enhance school services.
+- **Completed Functionalities**:<br>
+User authentication (login, registration, password reset).<br>
+Profile management with personalized data.<br>
+Real-time trending topics.<br>
+Q&A board for student interactions.<br>
+Personal homepage for user posts and favorites.<br>
+Block functionality for managing interactions.<br>
+Content posting with rich media support.<br>
+Real-time notifications.<br>
+
+- **Project Goal**: <br>
+Build a stronger community, improve resource acquisition and exchange efficiency, and collect data to enhance school services.
 - **Language Package**:<br>
 **Frontend**: *Javascript, HTML, CSS*<br>
 **Backend**: *Node.js, Django*<br>
@@ -93,7 +105,7 @@ If Python is not already installed on your system, follow these steps:<br>
 *python manage.py runserver* <br>
 
 ## Iterative Design
-- **Unit Test**:
+- **Unit Test**:<br>
 Focused on testing user authentication, post-creation, and real-time notifications. Additionally, 10 users tested the application for 5 rounds, providing valuable feedback for further improvements.
 - **Improvements**:<br>
 Added tooltips and hover effects for **better user guidance**.<br>
